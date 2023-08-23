@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     end
   end
 
+  post :create_developer_webhook, to: "public/home#create_developer_webhook"
+
   namespace :api do
     draw "api/v1"
     # 🚅 super scaffolding will insert new api versions above this line.
@@ -66,6 +68,9 @@ Rails.application.routes.draw do
         namespace :integrations do
           # 🚅 super scaffolding will insert new integration installations above this line.
         end
+
+        resources :applications
+        resources :developers
       end
     end
   end

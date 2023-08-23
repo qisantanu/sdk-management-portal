@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_31_003438) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_21_204133) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +59,31 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_31_003438) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "applications", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_applications_on_team_id"
+  end
+
+  create_table "blogs", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "published", default: false
+    t.index ["team_id"], name: "index_blogs_on_team_id"
+  end
+
+  create_table "developers", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_developers_on_team_id"
   end
 
   create_table "integrations_stripe_installations", force: :cascade do |t|
@@ -340,6 +365,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_31_003438) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "applications", "teams"
+  add_foreign_key "blogs", "teams"
+  add_foreign_key "developers", "teams"
   add_foreign_key "integrations_stripe_installations", "oauth_stripe_accounts"
   add_foreign_key "integrations_stripe_installations", "teams"
   add_foreign_key "invitations", "teams"

@@ -8,4 +8,8 @@ class Public::HomeController < Public::ApplicationController
 
   # Make Bullet Train's documentation available at `/docs`.
   include DocumentationSupport
+
+  def create_developer_webhook
+    puts "Hello world ====================> This is from create developer webhook=================>>>>>>>>>>>>>>>>"
+  end
 end

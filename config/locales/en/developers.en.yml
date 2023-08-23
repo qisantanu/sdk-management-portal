@@ -1,0 +1,91 @@
+en:
+  developers: &developers
+    label: &label Developers
+    breadcrumbs:
+      label: *label
+    navigation:
+      label: *label
+      icon: ti ti-user
+    buttons: &buttons
+      new: Add New Developer
+      create: Create Developer
+      edit: Edit Developer
+      update: Update Developer
+      destroy: Remove Developer
+      shorthand:
+        edit: Edit
+        destroy: Delete
+      confirmations:
+        # TODO customize for your use-case.
+        destroy: Are you sure you want to remove %{developer_name}? This will also remove any child resources and can't be undone.
+    developer:
+      buttons: *buttons
+    fields: &fields
+      id:
+        heading: Developer ID
+      team_id:
+        heading: Team ID
+      name:
+        _: &name Name
+        label: *name
+        heading: *name
+      # 🚅 super scaffolding will insert new fields above this line.
+      created_at:
+        _: &created_at Added
+        label: *created_at
+        heading: *created_at
+      updated_at:
+        _: &updated_at Updated
+        label: *updated_at
+        heading: *updated_at
+    api:
+      collection_actions: "Collection Actions for Developers"
+      index: "List Developers"
+      create: "Add a New Developer"
+      member_actions: "Actions for an Individual Developer"
+      show: "Retrieve a Developer"
+      update: "Update a Developer"
+      destroy: "Delete a Developer"
+      fields: *fields
+    index:
+      section: "%{teams_possessive} Developers"
+      contexts:
+        team:
+          header: Developers
+          description: Below is a list of Developers that have been added for %{team_name}.
+          description_empty: No Developers have been added for %{team_name}.
+      fields: *fields
+      buttons: *buttons
+    show:
+      section: "%{developer_name}"
+      header: Developer Details
+      description: Below are the details we have for %{developer_name}.
+      manage_description: You'll also find options for updating these details or removing %{developer_name} from %{team_name} entirely.
+      fields: *fields
+      buttons: *buttons
+    form: &form
+      buttons: *buttons
+      fields: *fields
+    new:
+      section: "New Developer for %{team_name}"
+      header: New Developer Details
+      description: Please provide the details of the new Developer you'd like to add to %{team_name}.
+      form: *form
+    edit:
+      section: "%{developer_name}"
+      header: Edit Developer Details
+      description: You can update the details or settings for %{developer_name} below.
+      form: *form
+    notifications:
+      created: Developer was successfully created.
+      updated: Developer was successfully updated.
+      destroyed: Developer was successfully destroyed.
+  account:
+    developers: *developers
+  activerecord:
+    attributes:
+      developer:
+        name: *name
+        # 🚅 super scaffolding will insert new activerecord attributes above this line.
+        created_at: *created_at
+        updated_at: *updated_at

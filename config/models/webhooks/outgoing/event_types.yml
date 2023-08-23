@@ -7,3 +7,5 @@ invitation:
   - crud
 membership:
   - crud
+developer:
+  - crud

@@ -1,10 +1,98 @@
 en:
-  teams:
-    fields:
-      _:
+  teams: &teams
+    label: &label Projects
+    singular: Project
+    breadcrumbs:
+      label: *label
+      team_settings: Project Settings
+      dashboard: Dashboard
+    navigation:
+      label: Project
+    buttons: &buttons
+      new: Add New Project
+      create: Create Project
+      edit: Edit Project
+      update: Update Project
+    index:
+      section: Projects
+      header: Your Projects
+      create: Create New Project
+      buttons: *buttons
+    show:
+      header: '%{teams_possessive} Dashboard'
+    new:
+      header: Create a New Project
+      former_user_header: Join a Project
+      default_team_name: Your Project
+      buttons: *buttons
+      you_can: "You can either:"
+      invitation_header: Accept an invitation
+      logout_header: Log out of this account
+      new_team_header: Create a new Project
+      alert: The account <b>%{user_email}</b> is not currently a member of any projects.
+      invitation: If you have received an email inviting you to join a new project, click the link in that email to accept the invitation.
+      log_out: You can log out of this account and log in with a different account that is a member of a project.
+      new_team: You can use the form below to create a new project of your own.
+    edit:
+      section: '%{team_name}'
+      header: Edit Project Details
+      description: You can update the details of and settings for this team below.
+    notifications:
+      created: Project was successfully created.
+      updated: Project was successfully updated.
+      invitation_only: Creating new Project is currently limited to users who have been invited for early access. If you've received an early access URL, please visit it before trying again.
+    form:
+      buttons: *buttons
+    fields: &fields
+      id:
+        _: &id Project ID
+        label: *id
+        heading: *id
+      name:
+        _: &name Project Name
+        label: *name
+        heading: Project
+      time_zone:
+        _: &time_zone Primary Time Zone
+        label: "Primary Time Zone"
+        heading: *time_zone
+      locale:
+        _: &locale Language
+        label: "Primary Language"
+        heading: *locale
       # 🚅 super scaffolding will insert new fields above this line.
+      created_at:
+        _: &created_at Signed Up At
+        heading: *created_at
+      updated_at:
+        _: &updated_at Updated At
+        heading: *updated_at
+    _: &self
+      name:
+        label: Your Project Name
+    self:
+      <<: [*self, *fields]
+    api:
+      actions: "Actions for Projects"
+      index: "List Projects"
+      create: "Add a New Project"
+      show: "Retrieve a Project"
+      update: "Update a Project"
+      fields: *fields
+  account:
+    teams: *teams
   activerecord:
     attributes:
       team:
-        _:
+        name: *name
+        time_zone: *time_zone
+        locale: *locale
         # 🚅 super scaffolding will insert new activerecord attributes above this line.
+        created_at: *created_at
+        updated_at: *updated_at
+  menus:
+    main:
+      labels:
+        team_members: Project Members
+        team: Project
+        team_settings: Project Settings
